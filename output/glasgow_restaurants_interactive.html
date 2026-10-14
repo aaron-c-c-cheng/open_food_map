@@ -404,12 +404,6 @@
             <input type="checkbox" id="independentToggle" onchange="updateMap()">
             <div class="toggle-switch"></div>
         </label>
-
-        <label class="toggle-container">
-            <span class="toggle-label">Cafes Only</span>
-            <input type="checkbox" id="cafesOnlyToggle" onchange="updateMap()">
-            <div class="toggle-switch"></div>
-        </label>
         
         
 
@@ -705,7 +699,6 @@
         var searchText = document.getElementById('searchInput').value.toLowerCase();
         var showUnderrated = document.getElementById('underratedToggle').checked;
         var onlyIndependents = document.getElementById('independentToggle').checked;
-        var cafesOnly = document.getElementById('cafesOnlyToggle').checked;
         
         document.getElementById('ratingVal').innerText = minRating.toFixed(1);
         document.getElementById('reviewVal').innerText = minReviews;
@@ -719,10 +712,6 @@
             if (onlyIndependents) {
                 // is_chain: 1 => chain, 0 => independent
                 if (r.is_chain === 1) return;
-            }
-
-            if (cafesOnly) {
-                if (r.cuisine_group.toLowerCase() !== "cafe") return;
             }
 
             if (showUnderrated) {
